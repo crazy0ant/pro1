@@ -25,7 +25,7 @@ public abstract class BasePager {
 	/*
 	 * 当子页面需要初始化数据，联网获取数据或绑定数据时重写该方法
 	 */
-	public void initDate(){
+	public void initData(){
 		
 	}
 	

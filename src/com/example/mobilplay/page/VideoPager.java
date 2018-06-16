@@ -31,9 +31,9 @@ public class VideoPager extends BasePager{
 	}
 	
 	@Override
-	public void initDate() {
+	public void initData() {
 		// TODO Auto-generated method stub
-		super.initDate();
+		super.initData();
 		Log.i("Test", "本地视频页面的数据被初始化了");
 		textView.setText("本地视频页面");
 		

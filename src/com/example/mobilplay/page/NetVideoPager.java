@@ -30,9 +30,9 @@ public class NetVideoPager extends BasePager{
 	}
 	
 	@Override
-	public void initDate() {
+	public void initData() {
 		// TODO Auto-generated method stub
-		super.initDate();
+		super.initData();
 		Log.i("Test", "网络视频页面的数据被初始化了");
 		textView.setText("网络视频页面");
 		
