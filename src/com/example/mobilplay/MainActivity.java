@@ -27,6 +27,7 @@ public class MainActivity extends Activity{
 	//选中的位置
 	private int position;
 	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
