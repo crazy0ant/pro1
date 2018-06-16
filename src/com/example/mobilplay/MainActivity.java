@@ -16,7 +16,9 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 
 
 public class MainActivity extends Activity{
-	
+	/*
+	 * MainActivity
+	 */
 	private FrameLayout fl_main_content;
 	
 	private RadioGroup rb_bottom_tag;
