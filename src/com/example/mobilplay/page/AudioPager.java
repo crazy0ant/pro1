@@ -1,12 +1,11 @@
 package com.example.mobilplay.page;
 
-import android.R.color;
+
 import android.content.Context;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.Gallery;
 import android.widget.TextView;
 
 import com.example.mobilplay.base.BasePager;
