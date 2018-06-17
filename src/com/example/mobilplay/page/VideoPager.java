@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.net.Uri;
@@ -16,13 +17,18 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView.FindListener;
+import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.mobilplay.R;
+import com.example.mobilplay.activity.SystemVideoPlayer;
+import com.example.mobilplay.adapter.videoPagerAdapter;
 import com.example.mobilplay.base.BasePager;
 import com.example.mobilplay.domain.MediaItem;
 
@@ -50,7 +56,7 @@ public class VideoPager extends BasePager{
 			if(mediaItems!=null&& mediaItems.size()>0){
 				//有数据
 				//设置适配器
-				adapter = new videoPagerAdapter();
+				adapter = new videoPagerAdapter(context, mediaItems);
 				listview.setAdapter(adapter);
 				//文本隐藏
 				tv_nomedia.setVisibility(View.GONE);
@@ -71,7 +77,31 @@ public class VideoPager extends BasePager{
 		listview = (ListView) view.findViewById(R.id.listview);
 		tv_nomedia = (TextView) view.findViewById(R.id.tv_nomedia);
 		pb_loading = (ProgressBar) view.findViewById(R.id.pb_loading);
+		//设置listview点击事件
+		listview.setOnItemClickListener(new MyOnItemClickListener());
 		return view;
+	}
+	
+	class MyOnItemClickListener implements AdapterView.OnItemClickListener{
+
+		@Override
+		public void onItemClick(AdapterView<?> parent, View view, int position,
+				long id) {
+			MediaItem mediaItem = mediaItems.get(position);
+			Toast.makeText(context, "mediaItem:"+mediaItem.toString(), 1000).show();
+			
+			//1.调用系统所有的播放器-隐式意图
+//			Intent intent = new Intent();
+//			intent.setDataAndType(Uri.parse(mediaItem.getData()), "video/*");//视频地址，视频格式
+//			context.startActivity(intent);
+			//2.调用自己写的播放器-显示意图
+			Intent intent = new Intent(context,SystemVideoPlayer.class);
+			intent.setDataAndType(Uri.parse(mediaItem.getData()), "video/*");//视频地址，视频格式
+			context.startActivity(intent);
+			
+		}
+		
+		
 	}
 	
 	@Override
@@ -139,74 +169,9 @@ public class VideoPager extends BasePager{
 			};
 		}.start();
 	}
-	class videoPagerAdapter extends BaseAdapter{
 
-		@Override
-		public int getCount() {
-			// TODO Auto-generated method stub
-			return mediaItems.size();
-		}
 
-		@Override
-		public Object getItem(int arg0) {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-		@Override
-		public long getItemId(int arg0) {
-			// TODO Auto-generated method stub
-			return 0;
-		}
-
-		@Override
-		public View getView(int position, View convertView, ViewGroup arg2) {
-			// TODO Auto-generated method stub
-			ViewHoder viewHoder;
-			if(convertView==null){
-				convertView = View.inflate(context, R.layout.item_video_pager, null);
-				viewHoder = new ViewHoder();
-				viewHoder.iv_icon = (ImageView) convertView.findViewById(R.id.iv_icon);
-				viewHoder.tv_name = (TextView) convertView.findViewById(R.id.tv_name);
-				viewHoder.tv_time = (TextView) convertView.findViewById(R.id.tv_time);
-				viewHoder.tv_size = (TextView) convertView.findViewById(R.id.tv_size);
-				convertView.setTag(viewHoder);
-			}else{
-				viewHoder = (ViewHoder) convertView.getTag();
-			}
-			
-			//根据position得到列表中对应位置的数据
-			MediaItem mediaItem = mediaItems.get(position);
-			viewHoder.tv_name.setText(mediaItem.getName());
-			viewHoder.tv_size.setText(Formatter.formatFileSize(context, mediaItem.getSize()));
-			viewHoder.tv_time.setText(transForDate1(mediaItem.getSize()));
-			
-			return convertView;
-		}
-		
-	}
-	static class ViewHoder{
-		ImageView iv_icon;
-		TextView tv_name,tv_time,tv_size;
-		
-		
-	}
-    public static String transForDate1(Long ms){  
-        String str = "";  
-        if(ms!=null){  
-            long msl=(long)ms*1000;  
-            SimpleDateFormat sdf=new SimpleDateFormat("HH:mm:ss");  
-              
-            if(ms!=null){  
-                try {  
-                    str=sdf.format(msl);  
-                } catch (Exception e) {  
-                    e.printStackTrace();  
-                }  
-            }  
-        }         
-        return str;  
-    } 
+ 
 
 }
 
