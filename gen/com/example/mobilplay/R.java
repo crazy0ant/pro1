@@ -41,27 +41,33 @@ public final class R {
         public static final int rb_video_textcolor_selector=0x7f020011;
         public static final int tv_search_drawable_selector=0x7f020012;
         public static final int video_default=0x7f020013;
+        public static final int video_default_icon=0x7f020014;
     }
     public static final class id {
-        public static final int action_settings=0x7f08000c;
+        public static final int action_settings=0x7f080010;
         public static final int fl_main_content=0x7f080000;
-        public static final int imageView1=0x7f080007;
+        public static final int imageView1=0x7f08000b;
+        public static final int iv_icon=0x7f080007;
         public static final int iv_splash_icon=0x7f080006;
-        public static final int listview=0x7f080009;
-        public static final int pb_loading=0x7f08000b;
+        public static final int listview=0x7f08000d;
+        public static final int pb_loading=0x7f08000f;
         public static final int rb_audio=0x7f080003;
         public static final int rb_bottom_tag=0x7f080001;
         public static final int rb_net_audio=0x7f080005;
         public static final int rb_net_video=0x7f080004;
         public static final int rb_video=0x7f080002;
-        public static final int tv_nomedia=0x7f08000a;
-        public static final int tv_search=0x7f080008;
+        public static final int tv_name=0x7f080008;
+        public static final int tv_nomedia=0x7f08000e;
+        public static final int tv_search=0x7f08000c;
+        public static final int tv_size=0x7f08000a;
+        public static final int tv_time=0x7f080009;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
         public static final int activity_splash=0x7f030001;
-        public static final int titlebar=0x7f030002;
-        public static final int video_pager=0x7f030003;
+        public static final int item_video_pager=0x7f030002;
+        public static final int titlebar=0x7f030003;
+        public static final int video_pager=0x7f030004;
     }
     public static final class menu {
         public static final int main=0x7f070000;
