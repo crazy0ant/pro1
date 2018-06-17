@@ -164,7 +164,7 @@ public class VideoPager extends BasePager{
 			// TODO Auto-generated method stub
 			ViewHoder viewHoder;
 			if(convertView==null){
-				View.inflate(context, R.layout.item_video_pager, null);
+				convertView = View.inflate(context, R.layout.item_video_pager, null);
 				viewHoder = new ViewHoder();
 				viewHoder.iv_icon = (ImageView) convertView.findViewById(R.id.iv_icon);
 				viewHoder.tv_name = (TextView) convertView.findViewById(R.id.tv_name);
