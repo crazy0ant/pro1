@@ -25,7 +25,10 @@
         <activity android:name="com.example.mobilplay.MainActivity"
             android:launchMode="singleTask"><!-- singleTask单例 -->
         </activity>
-        <activity android:name="com.example.mobilplay.activity.SystemVideoPlayer"></activity>
+        <activity android:name="com.example.mobilplay.activity.SystemVideoPlayer"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
+        </activity>
         
     </application>
 
